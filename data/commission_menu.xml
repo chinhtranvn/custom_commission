@@ -1,1 +1,12 @@
+<odoo>
+    <data>
+        <record id="action_commission" model="ir.actions.act_window">
+            <field name="name">Commission</field>
+            <field name="res_model">commission.commission</field>
+            <field name="view_mode">tree,form</field>
+        </record>
 
+        <menuitem id="menu_commission" name="Commission" parent="base.menu_sales" sequence="100"/>
+        <menuitem id="menu_commission_tree" name="Commission" parent="menu_commission" action="action_commission" sequence="10"/>
+    </data>
+</odoo>
