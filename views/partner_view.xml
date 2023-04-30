@@ -1,0 +1,41 @@
+<odoo>
+    <data>
+        <record id="view_partner_commission" model="ir.ui.view">
+            <field name="name">res.partner.commission</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Commission">
+                        <field name="commission_ids" context="{'search_default_partner_id': active_id}">
+                            <tree string="Commission" editable="bottom">
+                                <field name="order_id"/>
+                                <field name="amount_total"/>
+                                <field name="commission_percentage"/>
+                                <field name="commission_amount"/>
+                                <field name="payment_date"/>
+                                <field name="state"/>
+                            </tree>
+                            <form string="Commission">
+                                <sheet>
+                                    <group>
+                                        <field name="partner_id" readonly="1"/>
+                                        <field name="order_id" domain="[('partner_id', '=', parent.partner_id)]"/>
+                                        <field name="amount_total" readonly="1"/>
+                                        <field name="commission_percentage"/>
+                                        <field name="commission_amount" readonly="1"/>
+                                        <field name="payment_date"/>
+                                        <field name="state" readonly="1"/>
+                                    </group>
+                                    <group>
+                                        <button name="action_create_commission" string="Create Commission" type="object" attrs="{'invisible': [('customer', '=', False)]}"/>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+    </data>
+</odoo>

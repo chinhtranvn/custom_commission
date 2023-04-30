@@ -1,1 +1,45 @@
+<odoo>
+    <data>
+        <record id="view_commission_form" model="ir.ui.view">
+            <field name="name">commission.form</field>
+            <field name="model">commission.commission</field>
+            <field name="arch" type="xml">
+                <form string="Commission">
+                    <sheet>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="order_id"/>
+                            <field name="amount_total"/>
+                            <field name="commission_percentage"/>
+                            <field name="commission_amount"/>
+                            <field name="payment_date"/>
+                            <field name="state"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
+        <record id="view_commission_tree" model="ir.ui.view">
+            <field name="name">commission.tree</field>
+            <field name="model">commission.commission</field>
+            <field name="arch" type="xml">
+                <tree string="Commission">
+                    <field name="partner_id"/>
+                    <field name="order_id"/>
+                    <field name="amount_total"/>
+                    <field name="commission_percentage"/>
+                    <field name="commission_amount"/>
+                    <field name="payment_date"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_commission" model="ir.actions.act_window">
+            <field name="name">Commission</field>
+            <field name="res_model">commission.commission</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
