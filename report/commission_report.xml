@@ -1,1 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <report
+            id="report_commission"
+            string="Commission Report"
+            model="commission.commission"
+            report_type="qweb-pdf"
+            name="custom_commission.report_commission"
+            file="custom_commission.report_commission"
+            attachment_use="False"
+            attachment=False
+            print_report_name="'Commission Report' + (object.partner_id.name or '') + (object.order_id.name or '') + (object.name or '')"
+        />
 
+        <template id="report_commission">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <h2>Commission Report</h2>
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>Partner Name</td>
+                                    <td><strong t-field="o.partner_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Order Reference</td>
+                                    <td><strong t-field="o.order_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Commission Reference</td>
+                                    <td><strong t-field="o.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Order Amount</td>
+                                    <td><strong t-field="o.order_id.amount_total"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Commission Percentage</td>
+                                    <td><strong t-field="o.commission_percentage"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Commission Amount</td>
+                                    <td><strong t-field="o.commission_amount"/></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
